@@ -116,7 +116,7 @@ public record Language
     public string? Iso2LettersCode { get; init; }
 
     [Column("ISO_3_LETTERS_CODE")]
-    public string? Iso3LettersCode { get; init; }
+    public string Iso3LettersCode { get; init; } = string.Empty;
 
     [Column("WIN_3_LETTERS_CODE")]
     public string? Win3LettersCode { get; init; }

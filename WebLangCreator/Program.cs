@@ -19,15 +19,15 @@ builder.UseSerilog((hostingContext, loggerConfiguration) =>
 
 builder.ConfigureServices((hostContext, services) =>
 {
-    var connectionString = hostContext.Configuration.GetConnectionString("MyDbConnection");
+    var connectionString = hostContext.Configuration.GetConnectionString("Database");
     services.AddDbContextFactory<SportifierDB>(options =>
                                                    options
                                                        .UseSqlServer(connectionString,
                                                                      sqlServerOptions =>
                                                                          sqlServerOptions
                                                                              .CommandTimeout(120)));
+    services.AddHostedService<Worker>();
 });
-var app = builder.ConfigureServices(services => { services.AddHostedService<Worker>(); })
-                 .Build();
+var app = builder.Build();
 
 app.Run();

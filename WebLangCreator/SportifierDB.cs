@@ -10,6 +10,7 @@ public class SportifierDB : DbContext
     public DbSet<Athlete> Athletes { get; set; }
     public DbSet<Competitor> Competitors { get; set; }
     public DbSet<Competition> Competitions { get; set; }
+    public DbSet<Language> Languages { get; set; }
 
     public SportifierDB(DbContextOptions options)
         : base(options)
